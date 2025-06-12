@@ -1,8 +1,8 @@
 return {
     {
-        "folke/tokyonight.nvim",
+        "catppuccin/nvim",
         config = function()
-            vim.cmd.colorscheme "tokyonight"
+            vim.cmd.colorscheme "catppuccin-mocha"
         end
     },
     {
@@ -11,7 +11,7 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {
-            theme = "tokyonight",
+            theme = "catppuccin-mocha",
         }
     }
 }
