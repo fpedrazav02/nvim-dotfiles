@@ -4,7 +4,17 @@ return {
     lazy = false,
     opts = {
         bigfile = { enabled = true },
-        dashboard = { enabled = true },
+        dashboard = {
+            enabled = true,
+            sections = {
+                { section = "startup" },
+                {
+                    section = "terminal",
+                    cmd = "neofetch",
+                    height = 30,
+                }
+            }
+        },
         explorer = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
@@ -25,7 +35,8 @@ return {
             function() Snacks.lazygit() end,
             desc = "Lazygit"
         },
-        { "<leader>z",  function() Snacks.zen() end,           desc = "Toggle Zen Mode" },
-        { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" }
+        { "<leader>z",  function() Snacks.zen() end,                                           desc = "Toggle Zen Mode" },
+        { "<leader>un", function() Snacks.notifier.hide() end,                                 desc = "Dismiss All Notifications" },
+        { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end }
     }
 }
