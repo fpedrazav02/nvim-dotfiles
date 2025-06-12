@@ -18,10 +18,14 @@ return {
     },
 
     keys = {
-        { "<leader>gb", function() Snacks.gitbrowse() end,     desc = "Git Browse",               mode = { "n", "v" } },
-        { "<leader>lg", function() Snacks.lazygit() end,       desc = "Lazygit" },
+        { "<leader>gb", function() Snacks.gitbrowse() end,   desc = "Git Browse", mode = { "n", "v" } },
+        { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Git log " },
+        {
+            "<leader>lg",
+            function() Snacks.lazygit() end,
+            desc = "Lazygit"
+        },
         { "<leader>z",  function() Snacks.zen() end,           desc = "Toggle Zen Mode" },
-        { "<leader>t",  function() Snacks.terminal() end,      desc = "Toggle Terminal" },
         { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" }
     }
 }

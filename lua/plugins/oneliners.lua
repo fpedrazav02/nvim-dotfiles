@@ -12,5 +12,9 @@ return {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         config = true
+    },
+    -- Terminal
+    {
+        'voldikss/vim-floaterm',
     }
 }
