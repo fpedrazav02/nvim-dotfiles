@@ -6,6 +6,7 @@ vim.opt.relativenumber = true -- Números de línea relativos
 -- Configuración de plegado (folding)
 vim.opt.foldmethod = "indent" -- Plegar basado en indentación
 vim.opt.foldlevel = 99        -- Nivel inicial de plegado (todo desplegado)
+vim.opt.clipboard = "unnamedplus"
 
 -- Configuración de la barra de estado
 vim.opt.laststatus = 2  -- Siempre muestra la barra de estado
