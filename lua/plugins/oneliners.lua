@@ -24,7 +24,18 @@ return {
             vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
         end
     },
-    -- Surround
+    -- Copy over ssh
+    {
+        'ojroques/nvim-osc52',
+        config = function()
+            require('osc52').setup({
+                max_length = 0, -- 0 = no limit
+                silent = false, -- not silent = show messages
+                trim = false,   -- no trim of leading/trailing lines
+            })
+        end
+    }
+    , -- Surround
     {
         "echasnovski/mini.surround",
         event = { "BufReadPre", "BufNewFile" },

@@ -16,6 +16,10 @@ return {
                 ensure_installed = {
                     "lua_ls",       -- Lua
                     "basedpyright", -- Python
+                    "ts_ls",        -- Typescript
+                    "jdtls",        -- Java
+                    "jsonls",       -- Json
+                    "yamlls",       -- YAMl
                 },
                 automatic_installation = false,
             })
@@ -51,17 +55,13 @@ return {
                 map("n", "[d", vim.diagnostic.goto_prev)
                 map("n", "]d", vim.diagnostic.goto_next)
 
-                vim.api.nvim_create_autocmd("CursorHold", {
-                    buffer = bufnr,
-                    callback = function()
-                        vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
-                    end,
-                })
+                vim.keymap.set('n', '<leader>pp', function()
+                    vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
+                end, { desc = 'Mostrar diagnóstico flotante' })
             end
 
             -- Lista de LSPs que deseas usar
-            local servers = { "lua_ls", "basedpyright" }
-
+            local servers = { "lua_ls", "basedpyright", "jdtls", "yamlls", "jsonls", "ts_ls"}
             for _, server in ipairs(servers) do
                 lspconfig[server].setup({
                     capabilities = capabilities,
@@ -69,6 +69,31 @@ return {
                 })
             end
         end,
+    },
+    {
+        "jay-babu/mason-null-ls.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "nvimtools/none-ls.nvim",
+        },
+        config = function()
+            require("mason-null-ls").setup {
+                ensure_installed = {
+                    "black", -- Python formatter
+                    "prettier", -- Web formatter (opcional)
+                },
+                automatic_installation = true,
+            }
+
+            local null_ls = require("null-ls")
+            null_ls.setup {
+                sources = {
+                    null_ls.builtins.formatting.black,
+                    null_ls.builtins.formatting.prettier,
+                },
+            }
+        end
     }
+
 
 }

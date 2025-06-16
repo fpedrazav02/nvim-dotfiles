@@ -4,18 +4,7 @@ return {
     lazy = false,
     opts = {
         bigfile = { enabled = true },
-        dashboard = {
-            enabled = true,
-            sections = {
-                { section = "startup" },
-                {
-                    section = "terminal",
-                    cmd = "neofetch",
-                    height = 30,
-                }
-            }
-        },
-        explorer = { enabled = true },
+       explorer = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
         picker = { enabled = true },
@@ -29,7 +18,6 @@ return {
         },
         quickfile = { enabled = true },
         scope = { enabled = true },
-        scroll = { enabled = true },
         statuscolumn = { enabled = true },
         words = { enabled = true },
     },
