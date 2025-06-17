@@ -39,5 +39,3 @@ vim.opt.incsearch = true  -- Búsqueda incremental
 vim.opt.scrolloff = 8             -- Mantiene 8 líneas visibles al desplazarse
 vim.opt.signcolumn = "yes"        -- Muestra columna de signos
 vim.opt.updatetime = 50           -- Actualización más rápida
-vim.opt.spell = true              -- Habilita corrección ortográfica
-vim.opt.spelllang = "en_us,es_es" -- Idiomas para corrección ortográfica
