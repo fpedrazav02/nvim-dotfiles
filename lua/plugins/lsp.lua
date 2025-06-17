@@ -55,7 +55,7 @@ return {
                 map("n", "[d", vim.diagnostic.goto_prev)
                 map("n", "]d", vim.diagnostic.goto_next)
 
-                vim.keymap.set('n', '<leader>pp', function()
+                vim.keymap.set('n', '<leader>KP', function()
                     vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
                 end, { desc = 'Mostrar diagnóstico flotante' })
             end
