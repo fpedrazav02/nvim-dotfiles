@@ -23,3 +23,4 @@ vim.g.oscyank_term = 'default'
 vim.keymap.set('n', '<leader>c', '<Plug>OSCYankOperator', {silent = true})
 vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true, silent = true})
 vim.keymap.set('v', '<leader>c', '<Plug>OSCYankVisual', {silent = true})
+vim.keymap.set('n', 'q', '<Nop>', { noremap = true })
