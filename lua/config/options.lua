@@ -10,7 +10,7 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Configuración de la barra de estado
 vim.opt.laststatus = 2  -- Siempre muestra la barra de estado
-vim.opt.showmode = true -- Muestra el modo actual (INSERT, VISUAL, etc.)
+vim.opt.showmode = false -- Muestra el modo actual (INSERT, VISUAL, etc.)
 
 -- Configuración de indentación
 vim.opt.conceallevel = 0   -- No ocultar caracteres
