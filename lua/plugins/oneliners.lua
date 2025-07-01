@@ -83,10 +83,15 @@ return {
         end,
     },
     {
-        -- TODO
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
-        }
+        },
+        keys = {
+            { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Open TODO list in Telescope" },
+        },
+        config = function()
+            require("todo-comments").setup()
+        end
     }
 }
