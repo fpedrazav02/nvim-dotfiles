@@ -17,9 +17,6 @@ return {
                     "lua_ls",       -- Lua
                     "basedpyright", -- Python
                     "ts_ls",        -- Typescript
-                    "jdtls",        -- Java
-                    "jsonls",       -- Json
-                    "yamlls",       -- YAMl
                 },
                 automatic_installation = false,
             })
@@ -42,26 +39,28 @@ return {
                 end
 
                 -- Navegación
-                map("n", "gd", vim.lsp.buf.definition)
-                map("n", "gr", vim.lsp.buf.references)
-                map("n", "gi", vim.lsp.buf.implementation)
-
+                map("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
+                map("n", "gr", "<cmd>Telescope lsp_references<CR>")
+                map("n", "gi", "<cmd>Telescope lsp_implementations<CR>")
+ 
                 -- Ayuda / info
                 map("n", "K", vim.lsp.buf.hover)
                 map("n", "<leader>rn", vim.lsp.buf.rename)
-                map("n", "<leader>ca", vim.lsp.buf.code_action)
+                map("n", "<leader>cA", vim.lsp.buf.code_action)
 
                 -- Diagnóstico
                 map("n", "[d", vim.diagnostic.goto_prev)
                 map("n", "]d", vim.diagnostic.goto_next)
+                map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>")
+
 
                 vim.keymap.set('n', '<leader>KP', function()
                     vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
                 end, { desc = 'Mostrar diagnóstico flotante' })
             end
 
-            -- Lista de LSPs que deseas usar
-            local servers = { "lua_ls", "basedpyright", "jdtls", "yamlls", "jsonls", "ts_ls"}
+            -- Add lsp not handled by Mason
+            local servers = {}
             for _, server in ipairs(servers) do
                 lspconfig[server].setup({
                     capabilities = capabilities,
@@ -70,30 +69,4 @@ return {
             end
         end,
     },
-    {
-        "jay-babu/mason-null-ls.nvim",
-        dependencies = {
-            "williamboman/mason.nvim",
-            "nvimtools/none-ls.nvim",
-        },
-        config = function()
-            require("mason-null-ls").setup {
-                ensure_installed = {
-                    "black", -- Python formatter
-                    "prettier", -- Web formatter (opcional)
-                },
-                automatic_installation = true,
-            }
-
-            local null_ls = require("null-ls")
-            null_ls.setup {
-                sources = {
-                    null_ls.builtins.formatting.black,
-                    null_ls.builtins.formatting.prettier,
-                },
-            }
-        end
-    }
-
-
 }
