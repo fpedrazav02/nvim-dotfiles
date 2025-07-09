@@ -60,7 +60,7 @@ return {
             end
 
             -- Add lsp not handled by Mason
-            local servers = {}
+            local servers = { "lua_ls", "basedpyright", "ts_ls" }
             for _, server in ipairs(servers) do
                 lspconfig[server].setup({
                     capabilities = capabilities,
