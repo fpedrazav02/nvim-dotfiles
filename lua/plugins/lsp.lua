@@ -39,19 +39,20 @@ return {
                 end
 
                 -- Navegación
-                map("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
-                map("n", "gr", "<cmd>Telescope lsp_references<CR>")
-                map("n", "gi", "<cmd>Telescope lsp_implementations<CR>")
- 
+                vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", { noremap = true, silent = true })
+                vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", { noremap = true, silent = true })
+                vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", { noremap = true, silent = true })
+                vim.keymap.set("n", "gD", "<cmd>Telescope lsp_type_definitions<CR>", { noremap = true, silent = true })
+                
                 -- Ayuda / info
-                map("n", "K", vim.lsp.buf.hover)
-                map("n", "<leader>rn", vim.lsp.buf.rename)
-                map("n", "<leader>cA", vim.lsp.buf.code_action)
-
+                vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { noremap = true, silent = true })
+                vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, { noremap = true, silent = true })
+                vim.keymap.set("n", "<leader>cA", function() vim.lsp.buf.code_action() end, { noremap = true, silent = true })
+                
                 -- Diagnóstico
-                map("n", "[d", vim.diagnostic.goto_prev)
-                map("n", "]d", vim.diagnostic.goto_next)
-                map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>")
+                vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, { noremap = true, silent = true })
+                vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, { noremap = true, silent = true })
+                vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", { noremap = true, silent = true })
 
 
                 vim.keymap.set('n', '<leader>KP', function()
