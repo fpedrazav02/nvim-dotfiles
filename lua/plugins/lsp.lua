@@ -1,28 +1,5 @@
 return {
     {
-        -- LSP Installer
-        "williamboman/mason.nvim",
-        build = ":MasonUpdate",
-        config = function()
-            require("mason").setup()
-        end,
-    },
-
-    {
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = { "williamboman/mason.nvim" },
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "lua_ls",       -- Lua
-                    "basedpyright", -- Python
-                    "ts_ls",        -- Typescript
-                },
-                automatic_installation = false,
-            })
-        end,
-    },
-    {
         "neovim/nvim-lspconfig",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
@@ -60,7 +37,7 @@ return {
                 end, { desc = 'Mostrar diagnóstico flotante' })
             end
 
-            -- Add lsp not handled by Mason
+            -- Add lsp
             local servers = { "lua_ls", "basedpyright", "ts_ls" }
             for _, server in ipairs(servers) do
                 lspconfig[server].setup({
