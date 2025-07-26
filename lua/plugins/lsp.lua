@@ -38,7 +38,7 @@ return {
             end
 
             -- Add lsp
-            local servers = { "lua_ls", "basedpyright", "ts_ls" }
+            local servers = { "lua_ls", "basedpyright", "ts_ls", "clangd" }
             for _, server in ipairs(servers) do
                 lspconfig[server].setup({
                     capabilities = capabilities,
