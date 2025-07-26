@@ -63,6 +63,12 @@ return {
 				ocaml = {
 					require("formatter.filetypes.ocaml").ocamlformat,
 				},
+				c = {
+				  require("formatter.filetypes.c").clangformat,
+				},
+				cpp = {
+				  require("formatter.filetypes.cpp").clangformat,
+				},
 			},
 		})
 	end,
