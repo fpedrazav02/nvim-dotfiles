@@ -7,6 +7,7 @@ return {
       ensure_installed = {
         "lua", "python", "json", "yaml", "bash", "html", "css", "javascript", "c","cpp"
       },
+      auto_install = true,
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
