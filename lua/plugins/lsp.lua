@@ -1,3 +1,13 @@
+local lsps = {
+  lua_ls = "lua-language-server",
+  basedpyright = "basedpyright",
+  ts_ls = "typescript-language-server",
+  clangd = "clangd",
+  gopls = "gopls",
+  jdtls = "jdtls",
+  rust_analyzer = "rust-analyzer",
+}
+
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -39,12 +49,9 @@ return {
       end
     end
 
-    safe_lsp_setup("lua_ls", "lua-language-server")
-    safe_lsp_setup("basedpyright", "basedpyright")
-    safe_lsp_setup("ts_ls", "typescript-language-server")
-    safe_lsp_setup("clangd", "clangd")
-    safe_lsp_setup("gopls", "gopls")
-    safe_lsp_setup("jdtls", "jdtls")
+    for server, bin in pairs(lsps) do
+      safe_lsp_setup(server, bin)
+    end  
 
     local java_ok, java = pcall(require, "java")
     if java_ok and vim.fn.executable("jdtls") == 1 then
