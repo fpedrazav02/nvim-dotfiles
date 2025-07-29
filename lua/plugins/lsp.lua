@@ -38,6 +38,11 @@ return {
       map("n", "<leader>KP", function()
         vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
       end)
+      -- 🔍 Símbolos del archivo actual (clases, métodos, props...)
+      map("n", "<leader>cs", require("telescope.builtin").lsp_document_symbols, "Símbolos del archivo")
+
+      -- 🔍 Símbolos en todo el proyecto (requiere buen soporte del LSP)
+      map("n", "<leader>cS", require("telescope.builtin").lsp_workspace_symbols, "Símbolos globales")
     end
 
     local function safe_lsp_setup(server, bin)
