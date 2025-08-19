@@ -5,6 +5,26 @@ vim.opt.relativenumber = true -- Números de línea relativos
 vim.opt.winborder = "rounded" -- Rounded borders
 vim.opt.background = "dark"
 
+-- Hacer el fondo transparente
+vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
+
+-- Asegurarse de que la transparencia se mantiene después de cambiar colorschemes
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
+    end,
+})
+
+
 -- Configuración de plegado (folding)
 vim.opt.foldmethod = "indent" -- Plegar basado en indentación
 vim.opt.foldlevel = 99        -- Nivel inicial de plegado (todo desplegado)
