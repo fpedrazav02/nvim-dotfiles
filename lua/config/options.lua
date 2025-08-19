@@ -2,6 +2,8 @@
 vim.opt.termguicolors = true  -- Habilita colores true color en terminal
 vim.opt.nu = true             -- Muestra números de línea
 vim.opt.relativenumber = true -- Números de línea relativos
+vim.opt.winborder = "rounded" -- Rounded borders
+vim.opt.background = "dark"
 
 -- Configuración de plegado (folding)
 vim.opt.foldmethod = "indent" -- Plegar basado en indentación

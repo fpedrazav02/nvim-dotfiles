@@ -38,10 +38,7 @@ return {
       map("n", "<leader>KP", function()
         vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
       end)
-      -- 🔍 Símbolos del archivo actual (clases, métodos, props...)
       map("n", "<leader>cs", require("telescope.builtin").lsp_document_symbols, "Símbolos del archivo")
-
-      -- 🔍 Símbolos en todo el proyecto (requiere buen soporte del LSP)
       map("n", "<leader>cS", require("telescope.builtin").lsp_workspace_symbols, "Símbolos globales")
     end
 
@@ -56,7 +53,7 @@ return {
 
     for server, bin in pairs(lsps) do
       safe_lsp_setup(server, bin)
-    end  
+    end
 
     local java_ok, java = pcall(require, "java")
     if java_ok and vim.fn.executable("jdtls") == 1 then
