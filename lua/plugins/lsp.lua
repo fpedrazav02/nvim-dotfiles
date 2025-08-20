@@ -31,15 +31,13 @@ return {
       map("n", "gD", "<cmd>Telescope lsp_type_definitions<CR>")
       map("n", "K", function() vim.lsp.buf.hover() end)
       map("n", "<leader>rn", function() vim.lsp.buf.rename() end)
-      map("n", "<leader>cA", function() vim.lsp.buf.code_action() end)
-      map("n", "[d", function() vim.diagnostic.goto_prev() end)
-      map("n", "]d", function() vim.diagnostic.goto_next() end)
+      map("n", "<leader>ca", function() vim.lsp.buf.code_action() end)
       map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>")
       map("n", "<leader>KP", function()
-        vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
+        vim.diagnostic.open_float(nil, { focus = false})
       end)
-      map("n", "<leader>cs", require("telescope.builtin").lsp_document_symbols, "Símbolos del archivo")
-      map("n", "<leader>cS", require("telescope.builtin").lsp_workspace_symbols, "Símbolos globales")
+      map("n", "<leader>cs", require("telescope.builtin").lsp_document_symbols)
+      map("n", "<leader>cS", require("telescope.builtin").lsp_workspace_symbols)
     end
 
     local function safe_lsp_setup(server, bin)
@@ -57,6 +55,7 @@ return {
 
     local java_ok, java = pcall(require, "java")
     if java_ok and vim.fn.executable("jdtls") == 1 then
+      echo "Java Ok"
       java.setup()
     end
   end,
